@@ -105,11 +105,6 @@ Full log: [`CONTEXT.md`](https://github.com/KrishP147/dryft-decode-engine)
   <img src="https://raw.githubusercontent.com/KrishP147/KrishP147/output/github-snake.svg" alt="Contribution snake" />
 </picture>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=KrishP147&show_icons=true&theme=github_dark&hide_border=true&hide_title=true" />
-  <img src="https://github-readme-stats.vercel.app/api?username=KrishP147&show_icons=true&theme=default&hide_border=true&hide_title=true" alt="GitHub stats" />
-</picture>
-
 <div align="center">
 
 [![Site](https://img.shields.io/badge/site-krishpunjabi.com-000000?style=flat-square)](https://krishpunjabi.com)
