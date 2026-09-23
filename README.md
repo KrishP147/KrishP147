@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://capsule-render.vercel.app/api?type=rect&color=0:0D1117,100:161B22&height=140&section=header&text=Krish%20Punjabi&fontSize=40&fontColor=E6EDF3&fontAlign=50&fontAlignY=45&desc=Software%20Engineering%20%40%20Waterloo%20%E2%80%94%20agentic%20AI%20%C2%B7%20full-stack%20%C2%B7%20Praxic&descSize=15&descAlign=50&descAlignY=70&descColor=8B949E&animation=fadeIn" />
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:FFFFFF,100:F6F8FA&height=140&section=header&text=Krish%20Punjabi&fontSize=40&fontColor=1F2328&fontAlign=50&fontAlignY=45&desc=Software%20Engineering%20%40%20Waterloo%20%E2%80%94%20agentic%20AI%20%C2%B7%20full-stack%20%C2%B7%20Praxic&descSize=15&descAlign=50&descAlignY=70&descColor=57606A&animation=fadeIn" alt="Krish Punjabi" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://capsule-render.vercel.app/api?type=waving&color=0:050505,50:5BAEFF,100:B9A6FF&height=140&section=header&text=Krish%20Punjabi&fontSize=40&fontColor=F6F8FA&fontAlign=50&fontAlignY=45&desc=Software%20Engineering%20%40%20Waterloo%20%E2%80%94%20agentic%20AI%20%C2%B7%20full-stack%20%C2%B7%20Praxic&descSize=15&descAlign=50&descAlignY=70&descColor=DDE6F5&animation=fadeIn" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:FFFFFF,50:D6E9FF,100:EDE6FF&height=140&section=header&text=Krish%20Punjabi&fontSize=40&fontColor=0B1220&fontAlign=50&fontAlignY=45&desc=Software%20Engineering%20%40%20Waterloo%20%E2%80%94%20agentic%20AI%20%C2%B7%20full-stack%20%C2%B7%20Praxic&descSize=15&descAlign=50&descAlignY=70&descColor=3A3F63&animation=fadeIn" alt="Krish Punjabi" />
 </picture>
 
 <div align="center">
@@ -29,37 +29,6 @@ Software Engineering @ Waterloo, building **Praxic** — turning how teams actua
 </p>
 
 <p align="center"><sub>Also: Triton · CUDA graphs · Google ADK · Gemini · SAM 2 · Modal · MAVLink</sub></p>
-
-## Recent Activity
-
-<sub>Auto-updated daily — merged PRs and pushes, newest first.</sub>
-
-<!--START_SECTION:activity-->
-- **2026-07-16** — merged PR in [KrishP147/frameshift](https://github.com/KrishP147/frameshift/pull/2): merging Justin's changes w improvements to prod
-- **2025-11-19** — merged PR in [KrishP147/nutrisync-backend](https://github.com/KrishP147/nutrisync-backend/pull/12): Fix GOOGLE_API_KEY environment variable loading
-<!--END_SECTION:activity-->
-
-## Highlights
-
-- **[Dryft Decode Engine](https://github.com/KrishP147/dryft-decode-engine)** — 5th of 58, Hack the North 2026. From-scratch Triton/CUDA decode engine for Qwen3-4B on one H100, 2.6x throughput via fused kernels + in-graph speculative decoding.
-- **[Zephyr](https://github.com/KrishP147/zephyr)** — Top 12, Warp "Best Developer Tool," Hack the North 2026. Control plane for AI agents — policy-gated approvals, nothing irreversible ships without a human.
-- **[GodsEye](https://github.com/KrishP147/godseye)** — 2nd of 212, Polymarket track, YHack 2026. AI forecaster personas debate live prediction markets and converge on a probability.
-- **[NutriSync](https://nutrisync.me)** — live, solo-built. Gemini food-photo recognition over a 400K-item USDA dataset, full BMR/TDEE + fasting tracking.
-- **[FrameShift](https://frame-shift.tech)** — live, solo-built. Click an object, confirm the mask, remove/recolor/resize it across the clip — SAM 2 + Modal GPU.
-
-<sub>Also shipped: <a href="https://github.com/KrishP147/watspend">WatSpend</a> · <a href="https://github.com/KrishP147/colourguard">ColourGuard</a> (DeltaHacks) · <a href="https://github.com/KrishP147/autonomous-maze-solving-robot">Autonomous Maze Robot</a> (2nd/50+, Amazon Robotics Hackathon) · <a href="https://github.com/KrishP147/BaddieLink">BaddieLink</a> (Top 8, GoOnHacks) · Microsoft AI Business Leaders program (selected)</sub>
-
-## A Benchmark, Not a Badge
-
-From-scratch Qwen3-4B decode engine, Hack the North 2026 — judged entirely on hidden benchmarks:
-
-| Build | tok/s | What changed |
-|---|---|---|
-| v1 | 440.8 | Static KV cache, CUDA-graphed decode |
-| v15 | ~1047 | Fused Triton kernels, mask-free GEMV — ~71% of measured HBM bandwidth |
-| final | **1156.1** | In-graph speculative decoding — 2.6x v1, 5th of 58 teams |
-
-Full log: [`CONTEXT.md`](https://github.com/KrishP147/dryft-decode-engine)
 
 ## Contribution Activity
 
