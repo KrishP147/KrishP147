@@ -6,8 +6,7 @@
 <div align="center">
 
 [![Site](https://img.shields.io/badge/site-krishpunjabi.com-000000?style=flat-square)](https://krishpunjabi.com)
-<!-- PLACEHOLDER: LinkedIn badge — add once handle is confirmed, e.g.
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/USERNAME) -->
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://ca.linkedin.com/in/krish-punjabi)
 
 </div>
 
