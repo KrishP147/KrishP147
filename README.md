@@ -29,11 +29,8 @@ I'm a Software Engineering student at the University of Waterloo. This year I wo
 _Auto-updated daily by [`.github/workflows/recent-activity.yml`](.github/workflows/recent-activity.yml) — merged PRs and pushes across active repos, newest first._
 
 <!--START_SECTION:activity-->
-- **Sep 2026** — Built [Zephyr](https://github.com/KrishP147/zephyr) at Hack the North 2026, an agent control plane; top 12, Warp "Best Developer Tool" track.
-- **Sep 2026** — Built the [Dryft Decode Engine](https://github.com/KrishP147/dryft-decode-engine) at Hack the North 2026: a from-scratch Triton/CUDA inference engine for Qwen3-4B on one H100 — 1156.1 tok/s, 2.6x the first correct build, 5th of 58 teams.
-- **Aug 2026** — Wrapped a Software Engineering internship at **Ciena**, scaling a crash-analysis agent from 1 to 5 product platforms.
-- **Jun 2026** — Co-founded **Praxic**.
-- **Mar 2026** — Placed 2nd of 212 teams in the Polymarket-sponsored Prediction Markets track at YHack 2026 with [GodsEye](https://github.com/KrishP147/godseye).
+- **2026-07-16** — merged PR in [KrishP147/frameshift](https://github.com/KrishP147/frameshift/pull/2): merging Justin's changes w improvements to prod
+- **2025-11-19** — merged PR in [KrishP147/nutrisync-backend](https://github.com/KrishP147/nutrisync-backend/pull/12): Fix GOOGLE_API_KEY environment variable loading
 <!--END_SECTION:activity-->
 
 ## Projects
