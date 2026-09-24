@@ -13,19 +13,17 @@
 </div>
 
 ## About
+<!-- titles updated 2026-09-23 -->
 
-Software Engineering @ Waterloo, building **Praxic** — turning how teams actually work into automations that run themselves. Previously: AI/ML agents at Ciena, autonomy software at WARG, and way too many hackathons.
+Software Engineering @ Waterloo, building **Praxic** — turning how teams actually work into automations that run themselves.
 
-## Titles
-
-<!-- stars counted 2026-09-23 via gh -->
-- **CTO** @ Praxic
-- prev **SWE** @ Ciena (AI/ML agents)
-- prev **Autonomy** @ WARG (Waterloo Aerial Robotics Group)
-- **Open-source contributor** @ Skyvern — [4 PRs open · 0 merged](https://github.com/Skyvern-AI/skyvern/pulls?q=is%3Apr+author%3AKrishP147)
-- **2× hackathon 2nd place** — Amazon Robotics Hackathon '25, YHack '26
-- ⭐ **17 stars** across projects
-- **Programming hobbyist**
+- co-founder & CTO @ **Praxic**
+- prev SWE intern @ **Ciena** — AI/ML agents
+- prev autonomy software @ **WARG** — [target tracking + MAVLink control](https://github.com/KrishP147/ML-CV-Target-Tracking)
+- open-source contributor @ [**Skyvern**](https://github.com/Skyvern-AI/skyvern/pulls?q=is%3Apr+author%3AKrishP147) ![open PRs](https://img.shields.io/github/issues-search?query=repo%3ASkyvern-AI%2Fskyvern%20is%3Apr%20author%3AKrishP147%20is%3Aopen&label=open%20PRs&style=flat-square)
+- 2× 2nd place — [YHack '26](https://github.com/KrishP147/godseye) (Polymarket track) · [Amazon Robotics Hackathon](https://github.com/KrishP147/ArHackathon2025)
+- ![stars](https://img.shields.io/github/stars/KrishP147?style=flat-square&label=stars) across my repos
+- programming hobbyist
 
 ## Stack
 
