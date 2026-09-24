@@ -16,6 +16,17 @@
 
 Software Engineering @ Waterloo, building **Praxic** — turning how teams actually work into automations that run themselves. Previously: AI/ML agents at Ciena, autonomy software at WARG, and way too many hackathons.
 
+## Titles
+
+<!-- stars counted 2026-09-23 via gh -->
+- **CTO** @ Praxic
+- prev **SWE** @ Ciena (AI/ML agents)
+- prev **Autonomy** @ WARG (Waterloo Aerial Robotics Group)
+- **Open-source contributor** @ Skyvern — [4 PRs open · 0 merged](https://github.com/Skyvern-AI/skyvern/pulls?q=is%3Apr+author%3AKrishP147)
+- **2× hackathon 2nd place** — Amazon Robotics Hackathon '25, YHack '26
+- ⭐ **17 stars** across projects
+- **Programming hobbyist**
+
 ## Stack
 
 <p align="center">
