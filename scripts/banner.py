@@ -313,15 +313,25 @@ def build_banner() -> Image.Image:
     tag_x = text_x + (text_block_w - tag_w) // 2
     draw_tracked_text(draw, (tag_x, tag_y), tagline, tag_font, tag_color, tracking=tag_tracking)
 
-    # small accent underline under tagline start, echoing the rule color
+    # accent underlines under "software engineering" and "building praxic"
     underline_y = tag_y + int(30 * SS * 1.9)
-    underline_w = int(W * 0.14)
-    underline_x = text_x + (text_block_w - underline_w) // 2
-    draw.line(
-        [(underline_x, underline_y), (underline_x + underline_w, underline_y)],
-        fill=YELLOW + (140,),
-        width=max(1, SS),
-    )
+
+    def tag_span_x(prefix: str, word: str):
+        # x-range of `word` inside the tagline, honoring per-char tracking
+        start = tag_x + (tracked_text_width(draw, prefix, tag_font, tracking=tag_tracking)
+                         + (tag_tracking if prefix else 0))
+        end = start + tracked_text_width(draw, word, tag_font, tracking=tag_tracking)
+        return int(round(start)), int(round(end))
+
+    se = "software engineering"
+    bp = "building praxic"
+    assert tagline.startswith(se) and tagline.endswith(bp)
+    for x0, x1 in (tag_span_x("", se), tag_span_x(tagline[: -len(bp)], bp)):
+        draw.line(
+            [(x0, underline_y), (x1, underline_y)],
+            fill=YELLOW + (140,),
+            width=max(1, SS),
+        )
 
     # second yellow bar, identical to the first, right of the text block
     rule2_x = int(round(text_x + text_block_w + gap_text_rule))
