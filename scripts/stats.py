@@ -37,9 +37,34 @@ query($login: String!) {
 }
 """
 
+PR_QUERY = """
+query($login: String!, $cursor: String) {
+  user(login: $login) {
+    pullRequests(first: 100, orderBy: {field: CREATED_AT, direction: DESC}, after: $cursor) {
+      totalCount
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      nodes {
+        state
+        merged
+        repository {
+          nameWithOwner
+          owner {
+            __typename
+            login
+          }
+        }
+      }
+    }
+  }
+}
+"""
 
-def fetch_contributions(login, token):
-    body = json.dumps({"query": QUERY, "variables": {"login": login}}).encode("utf-8")
+
+def post_graphql(query, variables, token):
+    body = json.dumps({"query": query, "variables": variables}).encode("utf-8")
     req = urllib.request.Request(
         GRAPHQL_URL,
         data=body,
@@ -66,12 +91,66 @@ def fetch_contributions(login, token):
         print(f"GraphQL errors: {payload['errors']}", file=sys.stderr)
         sys.exit(1)
 
+    return payload
+
+
+def fetch_contributions(login, token):
+    payload = post_graphql(QUERY, {"login": login}, token)
+
     user = payload.get("data", {}).get("user")
     if not user:
         print(f"GraphQL response missing user data: {payload}", file=sys.stderr)
         sys.exit(1)
 
     return user["contributionsCollection"]
+
+
+def fetch_pr_buckets(login, token):
+    """Paginate the user's PRs and bucket them into oss / friends counts.
+
+    OSS = repo owner is an Organization that isn't the user.
+    Friends = repo owner is a User that isn't the user.
+    Closed-and-not-merged PRs are excluded from merged/open, but counted
+    separately so they can be reported.
+    """
+    oss = {"merged": 0, "open": 0, "closed_unmerged": 0}
+    friends = {"merged": 0, "open": 0, "closed_unmerged": 0}
+
+    cursor = None
+    while True:
+        payload = post_graphql(PR_QUERY, {"login": login, "cursor": cursor}, token)
+
+        user = payload.get("data", {}).get("user")
+        if not user:
+            print(f"GraphQL response missing user data: {payload}", file=sys.stderr)
+            sys.exit(1)
+
+        prs = user["pullRequests"]
+        for node in prs["nodes"]:
+            owner = node["repository"]["owner"]
+            owner_type = owner["__typename"]
+            owner_login = owner["login"]
+
+            if owner_type == "Organization" and owner_login != login:
+                bucket = oss
+            elif owner_type == "User" and owner_login != login:
+                bucket = friends
+            else:
+                continue
+
+            if node["merged"]:
+                bucket["merged"] += 1
+            elif node["state"] == "CLOSED":
+                bucket["closed_unmerged"] += 1
+            else:
+                bucket["open"] += 1
+
+        page_info = prs["pageInfo"]
+        if not page_info["hasNextPage"]:
+            break
+        cursor = page_info["endCursor"]
+
+    return oss, friends
 
 
 def flatten_days(calendar):
@@ -205,6 +284,45 @@ def render_svg(login, total, cur_len, cur_range, long_len, long_range, updated, 
     return svg
 
 
+def render_badge_svg(merged, total):
+    """for-the-badge style pill: left segment 'OSS PRS', right segment
+    '<merged> / <total> MERGED'. Same content for dark and light variants."""
+    height = 28
+    rx = 4
+    char_w = 7
+    seg_pad = 16  # each side
+
+    left_text = "OSS PRS"
+    right_text = f"{merged} / {total} MERGED"
+
+    left_w = seg_pad * 2 + len(left_text) * char_w
+    right_w = seg_pad * 2 + len(right_text) * char_w
+    width = left_w + right_w
+
+    title = escape(f"OSS PRs: {merged} / {total} merged", {"\"": "&quot;"})
+    left_text_esc = escape(left_text)
+    right_text_esc = escape(right_text)
+
+    left_path = (
+        f"M{rx},0 H{left_w} V{height} H{rx} "
+        f"A{rx},{rx} 0 0 1 0,{height - rx} V{rx} A{rx},{rx} 0 0 1 {rx},0 Z"
+    )
+    right_path = (
+        f"M{left_w},0 H{width - rx} A{rx},{rx} 0 0 1 {width},{rx} "
+        f"V{height - rx} A{rx},{rx} 0 0 1 {width - rx},{height} H{left_w} Z"
+    )
+
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="{title}">
+  <title>{title}</title>
+  <path d="{left_path}" fill="#050505" />
+  <path d="{right_path}" fill="#FFCE1A" />
+  <text x="{left_w / 2}" y="{height / 2 + 4}" text-anchor="middle" font-family="{FONT_FAMILY}" font-size="11" font-weight="700" letter-spacing="1" fill="#FFCE1A">{left_text_esc}</text>
+  <text x="{left_w + right_w / 2}" y="{height / 2 + 4}" text-anchor="middle" font-family="{FONT_FAMILY}" font-size="11" font-weight="700" letter-spacing="1" fill="#050505">{right_text_esc}</text>
+</svg>
+"""
+    return svg
+
+
 def main():
     parser = argparse.ArgumentParser(description="Generate GitHub contribution stats SVGs")
     parser.add_argument("--out", default="dist", help="output directory")
@@ -242,6 +360,24 @@ def main():
     print(f"Total contributions (past year): {total}")
     print(f"Current streak: {cur_len} days ({cur_range})")
     print(f"Longest streak: {long_len} days ({long_range})")
+
+    oss, friends = fetch_pr_buckets(args.user, token)
+    oss_total = oss["merged"] + oss["open"]
+
+    badge_svg = render_badge_svg(oss["merged"], oss_total)
+    for filename in ("oss-prs.svg", "oss-prs-light.svg"):
+        path = os.path.join(args.out, filename)
+        with open(path, "w", encoding="utf-8", newline="\n") as f:
+            f.write(badge_svg)
+
+    print(
+        f"OSS PRs: merged {oss['merged']}, open {oss['open']}, "
+        f"closed-unmerged {oss['closed_unmerged']}"
+    )
+    print(
+        f"Friends PRs: merged {friends['merged']}, open {friends['open']}, "
+        f"closed-unmerged {friends['closed_unmerged']}"
+    )
 
 
 if __name__ == "__main__":
