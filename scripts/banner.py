@@ -31,6 +31,7 @@ REPO_ROOT = HERE.parent
 ASSETS_DIR = REPO_ROOT / "assets"
 FONTS_DIR = HERE / "fonts"
 ICON_SVG = ASSETS_DIR / "icon-yellow.svg"
+ROCKY_WEBP = ASSETS_DIR / "rocky.webp"
 OUT_PNG = ASSETS_DIR / "banner.png"
 
 JURA_TTF = FONTS_DIR / "Jura.ttf"
@@ -240,43 +241,72 @@ def draw_inner_border(img: Image.Image) -> None:
 
 def build_banner() -> Image.Image:
     img = build_background()
+    draw = ImageDraw.Draw(img)
 
-    # --- yellow accent rule (vertical, left of the text block) -----------
+    # --- pieces: icon | rule | text block | rule | rocky, centered as one
+    # group with equal side margins -----------------------------------------
     icon_h = int(H * 0.42)
     icon = rasterize_icon(icon_h)
 
-    margin_x = int(W * 0.065)
-    content_top = (H - icon_h) // 2
-    icon_x = margin_x
-    img.alpha_composite(icon, (icon_x, content_top))
+    rocky_h = int(300 * SS)
+    rocky_src = Image.open(ROCKY_WEBP).convert("RGBA")
+    rocky_w = int(round(rocky_h * rocky_src.width / rocky_src.height))
+    rocky = rocky_src.resize((rocky_w, rocky_h), Image.LANCZOS)
 
-    rule_x = icon_x + icon.width + int(W * 0.035)
-    rule_top = content_top + int(icon_h * 0.06)
-    rule_bottom = content_top + icon_h - int(icon_h * 0.06)
-    draw = ImageDraw.Draw(img)
-    rule_w = max(2, 3 * SS)
-    # soft glow behind the rule
-    glow_img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    gdraw = ImageDraw.Draw(glow_img)
-    gdraw.line([(rule_x, rule_top), (rule_x, rule_bottom)], fill=YELLOW + (255,), width=rule_w)
-    glow_img = glow_img.filter(ImageFilter.GaussianBlur(6 * SS))
-    img = Image.alpha_composite(img, glow_img)
-    draw = ImageDraw.Draw(img)
-    draw.line([(rule_x, rule_top), (rule_x, rule_bottom)], fill=YELLOW + (255,), width=rule_w)
-
-    text_x = rule_x + int(W * 0.03)
-
-    # --- title: KRISH PUNJABI, Jura, beige, letter-spaced -----------------
     title = "KRISH PUNJABI"
     title_font = load_font(JURA_TTF, int(84 * SS), variation="Medium")
     tracking = int(8 * SS)
+    title_w = tracked_text_width(draw, title, title_font, tracking=tracking)
+
+    tagline = "software engineering @ uwaterloo  ·  building praxic"
+    tag_font = load_font(INTER_TTF, int(30 * SS), variation="Regular")
+    tag_tracking = int(1.2 * SS)
+    tag_w = tracked_text_width(draw, tagline, tag_font, tracking=tag_tracking)
+
+    text_block_w = max(title_w, tag_w)
+
+    gap_icon_rule = int(W * 0.035)
+    gap_rule_text = int(W * 0.03)
+    gap_text_rule = int(W * 0.03)
+    gap_rule_rocky = int(W * 0.035)
+
+    total_w = int(round(
+        icon.width + gap_icon_rule + gap_rule_text + text_block_w
+        + gap_text_rule + gap_rule_rocky + rocky.width
+    ))
+
+    content_left = (W - total_w) // 2
+    content_top = (H - icon_h) // 2
+
+    icon_x = content_left
+    img.alpha_composite(icon, (icon_x, content_top))
+
+    rule_w = max(2, 3 * SS)
+    rule_top = content_top + int(icon_h * 0.06)
+    rule_bottom = content_top + icon_h - int(icon_h * 0.06)
+
+    def draw_rule(x: int) -> None:
+        nonlocal img
+        glow_img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        gdraw = ImageDraw.Draw(glow_img)
+        gdraw.line([(x, rule_top), (x, rule_bottom)], fill=YELLOW + (255,), width=rule_w)
+        glow_img = glow_img.filter(ImageFilter.GaussianBlur(6 * SS))
+        img = Image.alpha_composite(img, glow_img)
+        ImageDraw.Draw(img).line(
+            [(x, rule_top), (x, rule_bottom)], fill=YELLOW + (255,), width=rule_w
+        )
+
+    rule1_x = icon_x + icon.width + gap_icon_rule
+    draw_rule(rule1_x)
+
+    text_x = rule1_x + gap_rule_text
+
+    # --- title: KRISH PUNJABI, Jura, beige, letter-spaced -----------------
+    draw = ImageDraw.Draw(img)
     title_y = content_top + int(icon_h * 0.10)
     draw_tracked_text(draw, (text_x, title_y), title, title_font, BEIGE + (255,), tracking=tracking)
 
     # --- tagline: Inter, muted, below title --------------------------------
-    tagline = "software engineering @ waterloo  ·  building praxic"
-    tag_font = load_font(INTER_TTF, int(30 * SS), variation="Regular")
-    tag_tracking = int(1.2 * SS)
     tag_y = title_y + int(84 * SS * 1.28)
     tag_color = (198, 198, 198, 255)
     draw_tracked_text(draw, (text_x, tag_y), tagline, tag_font, tag_color, tracking=tag_tracking)
@@ -289,6 +319,15 @@ def build_banner() -> Image.Image:
         fill=YELLOW + (140,),
         width=max(1, SS),
     )
+
+    # second yellow bar, identical to the first, right of the text block
+    rule2_x = int(round(text_x + text_block_w + gap_text_rule))
+    draw_rule(rule2_x)
+
+    # --- rocky, right of the second bar, vertically centered ---------------
+    rocky_x = rule2_x + gap_rule_rocky
+    rocky_top = (H - rocky.height) // 2
+    img.alpha_composite(rocky, (rocky_x, rocky_top))
 
     img = apply_rounded_transparent_corners(img)
     draw_inner_border(img)

@@ -2,26 +2,26 @@
 
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=16&pause=1200&color=8B949E&center=true&vCenter=true&width=560&lines=constantly+evolving.;building+Praxic;prev%3A+AI+%2B+ML+agents+%40+Ciena;5th+of+58+%E2%80%94+Hack+the+North+2026" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=16&pause=1200&color=8B949E&center=true&vCenter=true&width=560&lines=constantly+evolving.;building+Praxic;prev%3A+AI+%2B+ML+agents+%40+Ciena;5th+of+58+at+Hack+the+North+2026" alt="Typing SVG" />
 
 [![Site](https://img.shields.io/badge/site-krishpunjabi.com-FFCE1A?style=for-the-badge&labelColor=050505&logo=googlechrome&logoColor=FFCE1A)](https://krishpunjabi.com)
 [![LinkedIn](https://img.shields.io/badge/linkedin-krish--punjabi-FFCE1A?style=for-the-badge&labelColor=050505&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsPSIjRkZDRTFBIiBkPSJNMjAuNDQ3IDIwLjQ1MmgtMy41NTR2LTUuNTY5YzAtMS4zMjgtLjAyNy0zLjAzNy0xLjg1Mi0zLjAzNy0xLjg1MyAwLTIuMTM2IDEuNDQ1LTIuMTM2IDIuOTM5djUuNjY3SDkuMzUxVjloMy40MTR2MS41NjFoLjA0NmMuNDc3LS45IDEuNjM3LTEuODUgMy4zNy0xLjg1IDMuNjAxIDAgNC4yNjcgMi4zNyA0LjI2NyA1LjQ1NXY2LjI4NnpNNS4zMzcgNy40MzNjLTEuMTQ0IDAtMi4wNjMtLjkyNi0yLjA2My0yLjA2NSAwLTEuMTM4LjkyLTIuMDYzIDIuMDYzLTIuMDYzIDEuMTQgMCAyLjA2NC45MjUgMi4wNjQgMi4wNjMgMCAxLjEzOS0uOTI1IDIuMDY1LTIuMDY0IDIuMDY1em0xLjc4MiAxMy4wMTlIMy41NTVWOWgzLjU2NHYxMS40NTJ6TTIyLjIyNSAwSDEuNzcxQy43OTIgMCAwIC43NzQgMCAxLjcyOXYyMC41NDJDMCAyMy4yMjcuNzkyIDI0IDEuNzcxIDI0aDIwLjQ1MUMyMy4yIDI0IDI0IDIzLjIyNyAyNCAyMi4yNzFWMS43MjlDMjQgLjc3NCAyMy4yIDAgMjIuMjIyIDBoLjAwM3oiLz48L3N2Zz4%3D&logoColor=FFCE1A)](https://ca.linkedin.com/in/krish-punjabi)
 
 [![Stars](https://img.shields.io/github/stars/KrishP147?label=stars&logo=github&style=for-the-badge&labelColor=050505&color=FFCE1A&logoColor=FFCE1A)](https://github.com/KrishP147)
-[![Open PRs](https://img.shields.io/github/issues-search?query=repo%3ASkyvern-AI%2Fskyvern%20is%3Apr%20author%3AKrishP147%20is%3Aopen&label=open%20PRs%20%40%20Skyvern&logo=git&style=for-the-badge&labelColor=050505&color=FFCE1A&logoColor=FFCE1A)](https://github.com/Skyvern-AI/skyvern/pulls?q=is%3Apr+author%3AKrishP147)
+[![OSS PRs](https://img.shields.io/github/issues-search?query=is%3Apr%20author%3AKrishP147%20org%3ASkyvern-AI%20org%3Aaden-hive%20org%3AUWARG&label=OSS%20PRs&logo=git&style=for-the-badge&labelColor=050505&color=FFCE1A&logoColor=FFCE1A)](https://github.com/pulls?q=is%3Apr+author%3AKrishP147+org%3ASkyvern-AI+org%3Aaden-hive+org%3AUWARG) <!-- flip to is:merged once a PR lands; merged count is 0 today -->
 
 </div>
 
 ## About
 <!-- titles updated 2026-09-23 -->
 
-Software Engineering @ Waterloo, building **Praxic** — turning how teams actually work into automations that run themselves.
+Software Engineering @ UWaterloo, building **Praxic**: turning how teams actually work into automations that run themselves.
 
 - co-founder & CTO @ **Praxic**
-- prev SWE intern @ **Ciena** — AI/ML agents
-- prev autonomy software @ **WARG** — [target tracking + MAVLink control](https://github.com/KrishP147/ML-CV-Target-Tracking)
+- prev SWE intern @ **Ciena**, AI/ML agents
+- prev autonomy software @ **WARG**, [target tracking + MAVLink control](https://github.com/KrishP147/ML-CV-Target-Tracking)
 - open-source contributor @ [**Skyvern**](https://github.com/Skyvern-AI/skyvern/pulls?q=is%3Apr+author%3AKrishP147)
-- 2× 2nd place — [YHack '26](https://github.com/KrishP147/godseye) (Polymarket track) · [Amazon Robotics Hackathon](https://github.com/KrishP147/ArHackathon2025)
+- 2× 2nd place: [YHack '26](https://github.com/KrishP147/godseye) (Polymarket track) · [Amazon Robotics Hackathon](https://github.com/KrishP147/ArHackathon2025)
 - programming hobbyist
 
 ## Stack
@@ -40,6 +40,8 @@ Software Engineering @ Waterloo, building **Praxic** — turning how teams actua
 
 ## Contribution Activity
 
+<div align="center">
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KrishP147/KrishP147/output/github-snake-dark.svg" />
   <img src="https://raw.githubusercontent.com/KrishP147/KrishP147/output/github-snake.svg" alt="Contribution snake" />
@@ -50,9 +52,5 @@ Software Engineering @ Waterloo, building **Praxic** — turning how teams actua
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KrishP147/KrishP147/output/stats-dark.svg" />
   <img src="https://raw.githubusercontent.com/KrishP147/KrishP147/output/stats.svg" alt="GitHub contribution stats" />
 </picture>
-
-<div align="center">
-
-[![Site](https://img.shields.io/badge/site-krishpunjabi.com-FFCE1A?style=for-the-badge&labelColor=050505&logo=googlechrome&logoColor=FFCE1A)](https://krishpunjabi.com)
 
 </div>
