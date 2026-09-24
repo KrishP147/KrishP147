@@ -323,7 +323,7 @@ def build_banner() -> Image.Image:
         end = start + tracked_text_width(draw, word, tag_font, tracking=tag_tracking)
         return int(round(start)), int(round(end))
 
-    se = "software engineering"
+    se = "software engineering @ uwaterloo"
     bp = "building praxic"
     assert tagline.startswith(se) and tagline.endswith(bp)
     for x0, x1 in (tag_span_x("", se), tag_span_x(tagline[: -len(bp)], bp)):
