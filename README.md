@@ -5,7 +5,7 @@
 
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=16&pause=1200&color=8B949E&center=true&vCenter=true&width=560&lines=constantly+evolving.;building+Praxic;AI+%2B+ML+agents+%40+Ciena;5th+of+58+%E2%80%94+Hack+the+North+2026" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=16&pause=1200&color=8B949E&center=true&vCenter=true&width=560&lines=constantly+evolving.;building+Praxic;prev%3A+AI+%2B+ML+agents+%40+Ciena;5th+of+58+%E2%80%94+Hack+the+North+2026" alt="Typing SVG" />
 
 [![Site](https://img.shields.io/badge/site-krishpunjabi.com-000000?style=flat-square)](https://krishpunjabi.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://ca.linkedin.com/in/krish-punjabi)
