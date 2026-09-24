@@ -46,9 +46,10 @@ Software Engineering @ Waterloo, building **Praxic** — turning how teams actua
   <img src="https://raw.githubusercontent.com/KrishP147/KrishP147/output/github-snake.svg" alt="Contribution snake" />
 </picture>
 
+<!-- refreshed every 6h by .github/workflows/stats.yml -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-streak-stats.herokuapp.com/?user=KrishP147&theme=dark&hide_border=true" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=KrishP147&theme=default&hide_border=true" alt="GitHub streak stats" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KrishP147/KrishP147/output/stats-dark.svg" />
+  <img src="https://raw.githubusercontent.com/KrishP147/KrishP147/output/stats.svg" alt="GitHub contribution stats" />
 </picture>
 
 <div align="center">
