@@ -245,10 +245,10 @@ def build_banner() -> Image.Image:
 
     # --- pieces: icon | rule | text block | rule | rocky, centered as one
     # group with equal side margins -----------------------------------------
-    icon_h = int(H * 0.42)
+    icon_h = int(H * 0.54)
     icon = rasterize_icon(icon_h)
 
-    rocky_h = int(300 * SS)
+    rocky_h = int(H * 0.60)
     rocky_src = Image.open(ROCKY_WEBP).convert("RGBA")
     rocky_w = int(round(rocky_h * rocky_src.width / rocky_src.height))
     rocky = rocky_src.resize((rocky_w, rocky_h), Image.LANCZOS)
@@ -304,18 +304,21 @@ def build_banner() -> Image.Image:
     # --- title: KRISH PUNJABI, Jura, beige, letter-spaced -----------------
     draw = ImageDraw.Draw(img)
     title_y = content_top + int(icon_h * 0.10)
-    draw_tracked_text(draw, (text_x, title_y), title, title_font, BEIGE + (255,), tracking=tracking)
+    title_x = text_x + (text_block_w - title_w) // 2
+    draw_tracked_text(draw, (title_x, title_y), title, title_font, BEIGE + (255,), tracking=tracking)
 
     # --- tagline: Inter, muted, below title --------------------------------
     tag_y = title_y + int(84 * SS * 1.28)
     tag_color = (198, 198, 198, 255)
-    draw_tracked_text(draw, (text_x, tag_y), tagline, tag_font, tag_color, tracking=tag_tracking)
+    tag_x = text_x + (text_block_w - tag_w) // 2
+    draw_tracked_text(draw, (tag_x, tag_y), tagline, tag_font, tag_color, tracking=tag_tracking)
 
     # small accent underline under tagline start, echoing the rule color
     underline_y = tag_y + int(30 * SS * 1.9)
     underline_w = int(W * 0.14)
+    underline_x = text_x + (text_block_w - underline_w) // 2
     draw.line(
-        [(text_x, underline_y), (text_x + underline_w, underline_y)],
+        [(underline_x, underline_y), (underline_x + underline_w, underline_y)],
         fill=YELLOW + (140,),
         width=max(1, SS),
     )
