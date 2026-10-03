@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="197" height="28" viewBox="0 0 197 28" role="img" aria-label="OSS PRs: 0 / 7 merged">
+  <title>OSS PRs: 0 / 7 merged</title>
+  <path d="M4,0 H81 V28 H4 A4,4 0 0 1 0,24 V4 A4,4 0 0 1 4,0 Z" fill="#050505" />
+  <path d="M81,0 H193 A4,4 0 0 1 197,4 V24 A4,4 0 0 1 193,28 H81 Z" fill="#FFCE1A" />
+  <text x="40.5" y="18.0" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1" fill="#FFCE1A">OSS PRS</text>
+  <text x="139.0" y="18.0" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1" fill="#050505">0 / 7 MERGED</text>
+</svg>
