@@ -284,22 +284,43 @@ def render_svg(login, total, cur_len, cur_range, long_len, long_range, updated, 
     return svg
 
 
-def render_badge_svg(merged, total):
-    """for-the-badge style pill: left segment 'OSS PRS', right segment
-    '<merged> / <total> MERGED'. Same content for dark and light variants."""
+STARS_QUERY = """
+query($login: String!, $cursor: String) {
+  user(login: $login) {
+    repositories(first: 100, after: $cursor, ownerAffiliations: OWNER, privacy: PUBLIC, isFork: false) {
+      pageInfo { hasNextPage endCursor }
+      nodes { stargazerCount }
+    }
+  }
+}
+"""
+
+
+def fetch_stars(login, token):
+    """Total stars across the user's public, non-fork repos."""
+    stars, cursor = 0, None
+    while True:
+        payload = post_graphql(STARS_QUERY, {"login": login, "cursor": cursor}, token)
+        repos = payload["data"]["user"]["repositories"]
+        stars += sum(n["stargazerCount"] for n in repos["nodes"])
+        if not repos["pageInfo"]["hasNextPage"]:
+            return stars
+        cursor = repos["pageInfo"]["endCursor"]
+
+
+def render_badge_svg(left_text, right_text, title):
+    """for-the-badge style pill: black left segment, yellow right segment.
+    Same content for dark and light variants."""
     height = 28
     rx = 4
     char_w = 7
     seg_pad = 16  # each side
 
-    left_text = "OSS PRS"
-    right_text = f"{merged} / {total} MERGED"
-
     left_w = seg_pad * 2 + len(left_text) * char_w
     right_w = seg_pad * 2 + len(right_text) * char_w
     width = left_w + right_w
 
-    title = escape(f"OSS PRs: {merged} / {total} merged", {"\"": "&quot;"})
+    title = escape(title, {"\"": "&quot;"})
     left_text_esc = escape(left_text)
     right_text_esc = escape(right_text)
 
@@ -364,7 +385,10 @@ def main():
     oss, friends = fetch_pr_buckets(args.user, token)
     oss_total = oss["merged"] + oss["open"]
 
-    badge_svg = render_badge_svg(oss["merged"], oss_total)
+    badge_svg = render_badge_svg(
+        "OSS PRS", f"{oss['merged']} / {oss_total} MERGED",
+        f"OSS PRs: {oss['merged']} / {oss_total} merged",
+    )
     for filename in ("oss-prs.svg", "oss-prs-light.svg"):
         path = os.path.join(args.out, filename)
         with open(path, "w", encoding="utf-8", newline="\n") as f:
@@ -374,6 +398,11 @@ def main():
         f"OSS PRs: merged {oss['merged']}, open {oss['open']}, "
         f"closed-unmerged {oss['closed_unmerged']}"
     )
+    stars = fetch_stars(args.user, token)
+    with open(os.path.join(args.out, "stars.svg"), "w", encoding="utf-8", newline="\n") as f:
+        f.write(render_badge_svg("STARS", str(stars), f"Stars: {stars}"))
+    print(f"Stars: {stars}")
+
     print(
         f"Friends PRs: merged {friends['merged']}, open {friends['open']}, "
         f"closed-unmerged {friends['closed_unmerged']}"
