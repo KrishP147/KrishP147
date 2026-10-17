@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="113" height="28" viewBox="0 0 113 28" role="img" aria-label="Stars: 17">
+  <title>Stars: 17</title>
+  <path d="M4,0 H67 V28 H4 A4,4 0 0 1 0,24 V4 A4,4 0 0 1 4,0 Z" fill="#050505" />
+  <path d="M67,0 H109 A4,4 0 0 1 113,4 V24 A4,4 0 0 1 109,28 H67 Z" fill="#FFCE1A" />
+  <text x="33.5" y="18.0" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1" fill="#FFCE1A">STARS</text>
+  <text x="90.0" y="18.0" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1" fill="#050505">17</text>
+</svg>
